@@ -23,16 +23,28 @@ $choix = Read-Host "Votre choix de 1 à 4"
 switch ($choix) {
     1 {
         $fichier = Read-Host "Fichier à créer"
-        New-Item $fichier
+        if (-not(Test-Path $fichier)) { # si le fichier n'existe pas alors
+            New-Item $fichier
+        } else {
+            Write-Warning 'L''élément existe déjà'
+        }
     }
     2 {
         $dossier = Read-Host "Dossier à créer"
-        New-Item $dossier -ItemType Directory
+        if (Test-Path $dossier) { # si le dossier existe déjà
+            Write-Warning 'L''élément existe déjà'
+        } else {
+            New-Item $dossier -ItemType Directory
+        }
     }
     3 { Get-ChildItem }
     4 {
         $fichier = Read-Host "Fichier à afficher"
-        Get-Content $fichier
+        if (Test-Path $fichier -PathType Leaf) { # si le fichier existe alors
+            Get-Content $fichier
+        } else {
+            Write-Warning "Le fichier $fichier n'existe pas"
+        }
     }
     Default { Write-Warning "Mauvais choix. Choix valides 1 à 4" }
 }
