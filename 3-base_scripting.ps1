@@ -52,6 +52,12 @@ Write-Output "Vous avez saisi : $saisie"
 $fichier = Read-Host 'fichier'
 New-Item $fichier
 
+[int]$entier = Read-Host 'Un entier'
+$entier = [int](Read-Host 'Un entier')
+Write-Output "Vous avez saisi : $entier"
+# [UInt64]
+
+
 # Structure d'un objet
 $fichier | Get-Member
 $fichier | gm
