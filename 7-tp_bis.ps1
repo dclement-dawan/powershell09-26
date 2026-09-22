@@ -24,6 +24,8 @@ switch ($choix) {
     1 {
         $fichier = Read-Host "Fichier à créer"
         if (-not(Test-Path $fichier)) { # si le fichier n'existe pas alors
+        # ou identique à:
+        # if ((Test-Path $fichier) -eq $false) {
             New-Item $fichier
         } else {
             Write-Warning 'L''élément existe déjà'
@@ -31,7 +33,9 @@ switch ($choix) {
     }
     2 {
         $dossier = Read-Host "Dossier à créer"
-        if (Test-Path $dossier) { # si le dossier existe déjà
+        if ((Test-Path $dossier)) { # si le dossier existe déjà
+        # identique à:
+        # if ((Test-Path $dossier) -eq $true) {
             Write-Warning 'L''élément existe déjà'
         } else {
             New-Item $dossier -ItemType Directory
