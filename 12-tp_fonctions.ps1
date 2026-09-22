@@ -24,13 +24,16 @@
 # - en entrée : rien
 # - en sortie : un tableau d'entiers
 
-
-
-
+# tableau vide
+$tab = @()
+# ajouter dans le tableau
+$tab += 15
+# retour
+return $tab
 
 
 # 4- Créer une fonction Get-MinArray :
 #  - en entrée :
-#      $Tab un tableau d'entier [int[]]
+#      $Tab un tableau d'entier [int[]] obligatoire avec 1 élément à minima
 #  - en sortie
-#     retourne le plus petit du tableau
+#     retourne le plus petit élément du tableau
