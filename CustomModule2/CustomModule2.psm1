@@ -1,41 +1,3 @@
-# Créer un module CustomModule2 dans ~\documents\Powershell\modules
-
-# New-Item CustomModule2 -Force -ItemType Directory
-# New-ModuleManifest -Path .\CustomModule2\CustomModule2.psd1 `
-# -RootModule CustomModule2.psm1 -ModuleVersion 1.0.0
-
-
-# Créer une fonction dans ce module Get-Manufacturer2
-
-# Modifier la v1 de la fonction Get-Manufacturer
-# Au début de la fonction :
-
-
-# Ajouter un paramètre de type [Switch]$DownloadOUI
-
-# Si $DownloadOUI est vrai , alors supprimer le fichier oui.txt
-
-#  Si le fichier oui.txt a plus 15 jours alors le supprimer
-#     (Get-Item ./oui.txt).CreationTime
-
-#  Vérifier la présence du fichier oui.txt (Test-Path), s'il n'existe pas le télécharger
-#    Invoke-WebRequest
-# https://standards-oui.ieee.org/  -> oui.txt
-
-# Modifier la date pour le test:
-# (Get-Item .\oui.txt).CreationTime = '01/01/2026'
-
-# (Get-Item .\oui.txt).CreationTime
-
-# # Tester les dates :
-# ((Get-Date) -  (Get-Item .\oui.txt).CreationTime ).TotalDays -gt 15
-
-# (Get-Item .\oui.txt).CreationTime -lt (Get-Date).AddDays(-15)
-
-
-
-
-
 function Get-Manufacturer2 {
 <#
 .SYNOPSIS
@@ -63,22 +25,24 @@ function Get-Manufacturer2 {
         [switch]$DownloadOUI
     )
     $OUIFile = "$PSScriptRoot\oui.txt"
+    $UriOuiFile = 'https://standards-oui.ieee.org/'
     # Si $DownloadOUI est vrai , alors supprimer le fichier oui.txt
     if ($DownloadOUI) {
         Write-Verbose "Le fichier $OUIFIle doit être téléchargé"
         Remove-Item $OUIFile -Force -ErrorAction SilentlyContinue
     }
 
-    # Si le fichier oui.txt a plus 15 jours alors le supprimer
-    if ((Get-Item $OUIFile).CreationTime -lt (Get-Date).AddDays(-15)) {
-        Write-Verbose "Le fichier $OUIFIle est trop ancien"
-        Remove-Item $OUIFile -Force -ErrorAction SilentlyContinue
+    # Si le fichier oui.txt existe et a plus 15 jours alors le supprimer
+    if (Test-Path $OUIFile) {
+        if ((Get-Item $OUIFile).CreationTime -lt (Get-Date).AddDays(-15)) {
+            Write-Verbose "Le fichier $OUIFIle est trop ancien"
+            Remove-Item $OUIFile -Force -ErrorAction SilentlyContinue
+        }
     }
-
     # Vérifier la présence du fichier oui.txt (Test-Path), s'il n'existe pas le télécharger
     if (-not(Test-Path $OUIFile)) {
-        Write-Verbose "Téléchargement de fichier $OUIFIle"
-        Invoke-WebRequest -URI https://standards-oui.ieee.org/ -OutFile oui.txt
+        Write-Verbose "Téléchargement de fichier $OUIFile"
+        Invoke-WebRequest -URI $UriOuiFile -OutFile $OUIFile
     }
 
     Write-Verbose "Adresse MAC reçue: $MacAddress"
