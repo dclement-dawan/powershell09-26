@@ -27,7 +27,7 @@ Nom d'ordinateur :
     hostname.exe
 
 Tâche planifiée:
-pwsh -ExecutionPolicy Bypass -NoProfile -NonInteractive -WindowStyle Hidden -File "D:\scripts\log.ps1" -Message "ça marche ?" -LogLevel Information
+pwsh -ExecutionPolicy Bypass -NoProfile -NonInteractive -WindowStyle Hidden -File "c:\scripts\log.ps1" -Message "ça marche ?" -LogLevel Information
 
 - Documenter le script (paramètres + exemple)
 
@@ -39,4 +39,6 @@ La fonction prend 3 paramètres en entrée de type String :
         $LogFile, obligatoire le nom de fichier de log
         $Message, obligatoire
         et $LogLevel [ValidateSet('Error','Warning','Information')], valeur par défaut "Information"
+# Ajouter une directive #Requires sur le script
+
 #>

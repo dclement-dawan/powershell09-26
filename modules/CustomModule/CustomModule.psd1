@@ -11,7 +11,7 @@
     Description = 'Module à usage pédagogique'
     # PowerShellVersion = ''
     CompatiblePSEditions = @('Desktop', 'Core')
-    FunctionsToExport = @('Get-Manufacturer')
+    FunctionsToExport = @('Get-Manufacturer', 'Write-Log')
     AliasesToExport = @('*')  # 'gma'
     VariablesToExport = @('')
     # HelpInfoURI = ''

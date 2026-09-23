@@ -38,3 +38,28 @@ function Get-Manufacturer {
 }
 
 New-Alias -Name gma -Value Get-Manufacturer
+
+
+function Write-Log {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory)]
+        [String]$logFile,
+
+        [ValidateSet('Error','Warning','Information')]
+        [string]$LogLevel = 'Information',
+
+        [Parameter(Mandatory)]
+        [string]$Message
+    )
+
+    $log = @()
+    $log += Get-Date -Format 'dd/MM/yyyy'
+    $log += Get-Date -Format 'HH:mm:ss'
+    $log += $env:USERNAME
+    $log += HOSTNAME.EXE
+    $log += $LogLevel
+    $log += $Message
+
+    Add-Content -Path $LogFile -Value ($log -join ';') -Encoding utf8
+}
