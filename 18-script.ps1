@@ -36,4 +36,4 @@ param (
 Write-Output $param1, $param2
 
 # permet de générer un exitcode (variable $LASTEXITCODE)
-exit 1
+exit 0
