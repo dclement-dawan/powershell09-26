@@ -1,0 +1,20 @@
+[
+  {
+    "Name": "AD1",
+    "OperatingSystem": "Windows Server 2022 Datacenter Azure Edition",
+    "IPv4Address": "10.1.0.4",
+    "LastLogonDate": "23/09/2026"
+  },
+  {
+    "Name": "AD2",
+    "OperatingSystem": "Windows Server 2022 Datacenter Azure Edition",
+    "IPv4Address": "10.1.0.5",
+    "LastLogonDate": "23/09/2026"
+  },
+  {
+    "Name": "WIN11",
+    "OperatingSystem": "Windows 11 Enterprise multi-session",
+    "IPv4Address": "10.1.0.7",
+    "LastLogonDate": "23/09/2026"
+  }
+]

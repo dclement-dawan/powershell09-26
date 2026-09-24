@@ -1,3 +1,10 @@
+function foobar {
+    param($param)
+
+    $param*$param
+}
+
+
 function Get-Manufacturer {
 <#
 .SYNOPSIS

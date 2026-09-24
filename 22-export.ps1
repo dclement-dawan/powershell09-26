@@ -75,6 +75,81 @@ function ConvertTo-HumanReadable {
 
 
 # Afficher avec la taille du fichier en mode "human readable" :
-Get-ChildItem |
+Get-ChildItem -File |
     Select-Object Name,
         @{Name='SizeHR'; Expression={(ConvertTo-HumanReadable $_.Length).SizeWithUnitRounded}}
+
+
+# Les utilisateurs sans adresse mail
+Get-ADUser -Filter * -Properties * |
+    Select-Object GivenName, Surname, SamAccountName, UserPrincipalName, EmailAddress, OfficePhone |
+    Where-Object EmailAddress -eq $null | # 1 seule condition autorisée sans méthode
+    Where-Object EmailAddress -notmatch '^[\t ]+$' |
+    Export-Csv users.csv -Encoding utf8 -NoTypeInformation -Delimiter ';'
+
+
+Get-ADUser -Filter * -Properties * |
+    Select-Object GivenName, Surname, SamAccountName, UserPrincipalName, EmailAddress, OfficePhone |
+    Where-Object {$_.EmailAddress -eq $null -or $_.EmailAddress.Trim() -eq ''} |
+    Export-Csv users.csv -Encoding utf8 -NoTypeInformation -Delimiter ';'
+
+Get-ADUser -Filter * -Properties * -SearchBase 'ou=admins,dc=dawan,dc=local' |
+    Select-Object GivenName, Surname, SamAccountName, UserPrincipalName, EmailAddress, OfficePhone | # ?? : coalescing, si la valeur est nulle on prend la valeur après l'opérateur
+    Where-Object {($_.EmailAddress ?? '').Trim() -eq ''} |
+    Export-Csv users.csv -Encoding utf8 -NoTypeInformation -Delimiter ';'
+
+# Méthode .Trim() sur les chaines : élagage, supprime les carac vides en début et fin de chaine
+Get-ADUser -Filter * -Properties * -SearchBase 'ou=admins,dc=dawan,dc=local' |
+    Select-Object GivenName, Surname, SamAccountName, UserPrincipalName, EmailAddress, OfficePhone |
+    Where-Object {([string]($_.EmailAddress)).Trim() -eq ''} |
+    Export-Csv users.csv -Encoding utf8 -NoTypeInformation -Delimiter ';'
+
+
+    
+
+Get-ADUser -Filter * -Properties * -SearchBase 'ou=admins,dc=dawan,dc=local' |
+    Select-Object GivenName, Surname, SamAccountName, UserPrincipalName, EmailAddress, OfficePhone |
+    Where-Object {([string]($_.EmailAddress)).Trim() -eq ''} |
+    Sort-Object GivenName, Surname | # Tri ascendant par défaut
+    Export-Csv users.csv -Encoding utf8 -NoTypeInformation -Delimiter ';'
+
+
+Get-ChildItem |
+    Select-Object Name, Length |
+    Sort-Object Length -Descending |
+    Select-Object -First 10
+
+
+Get-ChildItem |
+    Select-Object Name, LastWriteTime |
+    Sort-Object LastWriteTime -Descending |
+    Select-Object -First 10
+
+
+Get-ADUser -Filter * -SearchBase 'ou=admins,dc=dawan,dc=local' |
+    Set-ADUser -Department IT
+
+
+Get-ADUser -Filter * -Properties Department |
+    Group-Object Department
+
+$dic = Get-ADUser -Filter * -Properties Department |
+    Group-Object Department -AsHashTable
+
+$dic['IT']
+$dic.IT
+$dic.'Admin local'
+$dpt = 'Admin local'
+$dic.$dpt
+
+
+Get-ADUser -Filter * -Properties * | Measure-Object 
+
+(Get-ADUser -Filter * -Properties * | Measure-Object).Count
+
+# Calcul sur une propriété numérique
+Get-ChildItem | Measure-Object Length -Sum -Average -Maximum -Minimum
+
+# Powershell 7
+Get-ChildItem | Measure-Object Length -StandardDeviation
+Get-ChildItem | Measure-Object Length -AllStats

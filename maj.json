@@ -1,0 +1,27 @@
+[
+  {
+    "SamAccountName": "gilles.pietri",
+    "Department": "IT",
+    "Organization": "Dawan France"
+  },
+  {
+    "SamAccountName": "jérôme.merckling",
+    "Department": "Direction",
+    "Organization": "DJGroup"
+  },
+  {
+    "SamAccountName": "mickaël.jaqua",
+    "Department": "Compta",
+    "Organization": "Dawan"
+  },
+  {
+    "SamAccountName": "paola.nunes",
+    "Department": "Commercial Commercial Commercial Commercial",
+    "Organization": "Dawan"
+  },
+  {
+    "SamAccountName": "david.clement",
+    "Department": "IT",
+    "Organization": "Dawan Paris"
+  }
+]

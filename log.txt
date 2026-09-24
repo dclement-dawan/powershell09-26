@@ -1,0 +1,19 @@
+*** ad1.internal.cloudapp.net can't find toto.dawan.fr: Non-existent domain
+
+Cannot find an object with identity: 'truc' under: 'DC=dawan,DC=local'.
+09/24/2026 16:37:32; Cannot find an object with identity: 'truc' under: 'DC=dawan,DC=local'.
+09/24/2026 16:37:50; The server is unwilling to process the request.
+09/24/2026 16:52:58; Exception: C:\Users\david\Documents\Powershell09-26\29-debug_vscode.ps1:15:9
+Line |
+  15 |          throw 'argh'
+     |          ~~~~~~~~~~~~
+     | argh
+
+
+09/24/2026 17:01:47; Exception: C:\Users\david\Documents\Powershell09-26\29-debug_vscode.ps1:15:9
+Line |
+  15 |          throw 'argh'
+     |          ~~~~~~~~~~~~
+     | argh
+
+
