@@ -1,0 +1,4 @@
+﻿"Name";"OperatingSystem";"IPv4Address";"LastLogonDate";"DiskCPercentUsed"
+"WIN11";"Windows 11 Enterprise multi-session";"10.1.0.7";"23/09/2026 17:38:07";"28,8"
+"AD1";"Windows Server 2022 Datacenter Azure Edition";"10.1.0.4";"23/09/2026 17:30:06";"9,76"
+"AD2";"Windows Server 2022 Datacenter Azure Edition";"10.1.0.5";"23/09/2026 17:31:27";"9,66"
