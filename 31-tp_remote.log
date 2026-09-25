@@ -1,0 +1,52 @@
+"12:29:00";"New-Item: C:\Users\david\Documents\Powershell09-26\31-tp_remote.ps1:31:1
+Line |
+  31 |  New-Item $UNCPath -ItemType Directory
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | An item with the specified name
+     | \\AD1\c$\Shares\Dav_share already exists.
+
+";"25/09/2026"
+"12:29:50";"New-Item: C:\Users\david\Documents\Powershell09-26\31-tp_remote.ps1:31:1
+Line |
+  31 |  New-Item $UNCPath -ItemType Directory
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | An item with the specified name
+     | \\AD1\c$\Shares\Dav_share already exists.
+
+";"25/09/2026"
+"13:40:49";"New-Item: C:\Users\david\Documents\Powershell09-26\31-tp_remote.ps1:43:1
+Line |
+  43 |  New-Item $UNCPath -ItemType Directory
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | An item with the specified name \\AD1\c$\Shares\Dav_share already exists.
+
+";"25/09/2026"
+"13:41:31";"New-Item: C:\Users\david\Documents\Powershell09-26\31-tp_remote.ps1:43:1
+Line |
+  43 |  New-Item $UNCPath -ItemType Directory
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | An item with the specified name \\AD1\c$\Shares\Dav_share already exists.
+
+";"25/09/2026"
+"13:42:32";"New-Item: C:\Users\david\Documents\Powershell09-26\31-tp_remote.ps1:43:1
+Line |
+  43 |  New-Item $UNCPath -ItemType Directory
+     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | An item with the specified name \\AD1\c$\Shares\Dav_share already exists.
+
+";"25/09/2026"
+"13:50:52";"New-Item: C:\Users\david\Documents\Powershell09-26\31-tp_remote.ps1:44:5
+Line |
+  44 |      New-Item $UNCPath -ItemType Directory | Out-Null
+     |      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | An item with the specified name
+     | \\AD1\c$\Shares\Dav_temporaire already exists.
+
+";"25/09/2026"
+"13:57:08";"Exception: C:\Users\david\Documents\Powershell09-26\31-tp_remote.ps1:30:5
+Line |
+  30 |      throw ""Le serveur $Server n'est pas accessible pour WinRM(TCP/598 …
+     |      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+     | Le serveur AD1 n'est pas accessible pour WinRM(TCP/5985)
+
+";"25/09/2026"
